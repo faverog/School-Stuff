@@ -89,7 +89,7 @@ else:
     finalNumBin = binaryWhole + "." + binaryDecimal
     finalNumHex = hex(int(binaryWhole, 2))[2:].upper() + "." + hex(int(binaryDecimal, 2))[2:].upper()
 
-print(f"Decimal Vaule: {decValue}")
+print(f"Decimal Value: {decValue}")
 print(f"Binary Value: {finalNumBin}")
 print(f"Hex Value: {finalNumHex}")
 
