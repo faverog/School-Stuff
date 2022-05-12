@@ -2,6 +2,9 @@ decValue = input("Enter decimal value: ")
 Nsig = int(input("Enter bits before decimal: "))
 Ndec = int(input("Enter bits after decimal: "))
 
+def binToHex(num):
+    return hex(int(num, 2))[2:].upper()
+
 neg = False
 if decValue[0] == "-":
     neg = True
@@ -83,18 +86,12 @@ if neg:
                 finalDecimal += binaryDecimalComp[i]
 
 if neg:
-    print(finalWhole + "." + finalDecimal)
+    finalNumBin = finalWhole + "." + finalDecimal
+    finalNumHex = binToHex(finalWhole) + "." + binToHex(finalDecimal)
 else:
-    print(binaryWhole + "." + binaryDecimal)
+    finalNumBin = binaryWhole + "." + binaryDecimal
+    finalNumHex = binToHex(binaryWhole) + "." + binToHex(binaryDecimal)
 
-
-
-
-
-
-
-
-
-
-
-
+print(f"Decimal Value: {decValue}")
+print(f"Binary Value: {finalNumBin}")
+print(f"Hex Value: {finalNumHex}")
