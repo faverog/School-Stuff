@@ -3,6 +3,8 @@ Nsig = int(input("Enter bits before decimal: "))
 Ndec = int(input("Enter bits after decimal: "))
 
 def binToHex(num):
+    if not num:
+        return ""
     return hex(int(num, 2))[2:].upper()
 
 neg = False
