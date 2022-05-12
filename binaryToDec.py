@@ -83,10 +83,15 @@ if neg:
                 finalDecimal += binaryDecimalComp[i]
 
 if neg:
-    print(finalWhole + "." + finalDecimal)
+    finalNumBin = finalWhole + "." + finalDecimal
+    finalNumHex = hex(int(finalWhole, 2))[2:].upper() + "." + hex(int(finalDecimal, 2))[2:].upper()
 else:
-    print(binaryWhole + "." + binaryDecimal)
+    finalNumBin = binaryWhole + "." + binaryDecimal
+    finalNumHex = hex(int(binaryWhole, 2))[2:].upper() + "." + hex(int(binaryDecimal, 2))[2:].upper()
 
+print(f"Decimal Vaule: {decValue}")
+print(f"Binary Value: {finalNumBin}")
+print(f"Hex Value: {finalNumHex}")
 
 
 
