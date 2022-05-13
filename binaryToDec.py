@@ -1,12 +1,23 @@
-decValue = input("Enter decimal value: ")
-Nsig = int(input("Enter bits before decimal: "))
-Ndec = int(input("Enter bits after decimal: "))
+import math
+from decimal import Decimal
 
 def binToHex(num):
     if not num:
         return ""
     return hex(int(num, 2))[2:].upper()
 
+def fexp(number):
+    (sign, digits, exponent) = Decimal(number).as_tuple()
+    return len(digits) + exponent - 1
+
+def fman(number):
+    return Decimal(number).scaleb(-fexp(number)).normalize()
+
+decValue = input("Enter decimal value: ")
+Nsig = int(input("Enter bits before decimal: "))
+Ndec = int(input("Enter bits after decimal: "))
+
+wholeDecNum = decValue
 neg = False
 if decValue[0] == "-":
     neg = True
@@ -97,3 +108,20 @@ else:
 print(f"Decimal Value: {decValue}")
 print(f"Binary Value: {finalNumBin}")
 print(f"Hex Value: {finalNumHex}")
+
+if neg:
+    sign = "1"
+else:
+    sign = "0"
+frexp = math.frexp(float(wholeDecNum))
+
+def mantissa(num):
+    mantissaBin = finalNumBin[:finalNumBin.find("1")+1] + "." + finalNumBin[finalNumBin.find("1")+2:]
+    # print(mantissaBin)
+    exponent = mantissaBin.rfind('.') - mantissaBin.find('.')
+    mantissaBin = mantissaBin[:mantissaBin.rfind(".")] + mantissaBin[mantissaBin.rfind(".")+1:]
+    # mantissa = bin(mantissaBin).replace("0b","")
+    return (mantissa, exponent)
+
+print(f"Sign Mantissa Exponent: {sign} {mantissa(finalNumBin)[0]} {mantissa(finalNumBin)[1]}")
+# print(f"Sign Mantissa Exponent: {sign} {fman(wholeDecNum)} {fexp(wholeDecNum)}")
