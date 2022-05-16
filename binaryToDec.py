@@ -1,12 +1,35 @@
-decValue = input("Enter decimal value: ")
-Nsig = int(input("Enter bits before decimal: "))
-Ndec = int(input("Enter bits after decimal: "))
+import math
+from decimal import Decimal
 
 def binToHex(num):
     if not num:
         return ""
     return hex(int(num, 2))[2:].upper()
 
+def mantissa(decValue):
+    if neg:
+        sign = "1"
+        mantissa = float(decValue[1:])
+    else:
+        sign = "0"
+        mantissa = float(decValue)
+    exponent = 0
+    while mantissa > 2 or mantissa < 1:
+        if(mantissa < 1):
+            mantissa *= 2
+            exponent -= 1
+        else:
+            mantissa /= 2
+            exponent += 1
+    
+    return (sign, mantissa, exponent)
+
+
+decValue = input("Enter decimal value: ")
+Nsig = int(input("Enter bits before decimal: "))
+Ndec = int(input("Enter bits after decimal: "))
+
+wholeDecNum = decValue
 neg = False
 if decValue[0] == "-":
     neg = True
@@ -97,3 +120,5 @@ else:
 print(f"Decimal Value: {decValue}")
 print(f"Binary Value: {finalNumBin}")
 print(f"Hex Value: {finalNumHex}")
+
+print(f"Sign Mantissa Exponent: {mantissa(wholeDecNum)[0]} {mantissa(wholeDecNum)[1]} {mantissa(wholeDecNum)[2]}")
