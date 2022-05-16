@@ -9,9 +9,10 @@ def binToHex(num):
 def mantissa(decValue):
     if neg:
         sign = "1"
+        mantissa = float(decValue[1:])
     else:
         sign = "0"
-    mantissa = float(decValue[1:])
+        mantissa = float(decValue)
     exponent = 0
     while mantissa > 2 or mantissa < 1:
         if(mantissa < 1):
