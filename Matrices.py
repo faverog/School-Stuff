@@ -7,9 +7,12 @@ init_printing()
 from sympy.abc import K, s, k, x, y, J, D, b, l, L, R
 
 # Define matricies (Exponents are denoted by '**')
-A = Matrix([[-10, 0, -2], [0, 0, 1], [0.2, 0, -1]])
-B = Matrix([[10], [0], [0]])
-C = Matrix([[0, 1, 0]])
+# Example 3x3: Matrix([[-10, 0, -2], [0, 0, 1], [0.2, 0, -1]])
+# Example 3x1: Matrix([[1], [1], [-1]])
+# Example 1x3: Matrix([[0, 1, -1]])
+A = Matrix([[0, 1, 0], [-1, -2, 2], [0, 2, -2]])
+B = Matrix([[1], [1], [-1]])
+C = Matrix([[0, 1, -1]])
 D = Matrix([0])
 
 #Define sI-A matrix
