@@ -8,8 +8,8 @@ from sympy.abc import K, s, k, x, y, J, D, b, l, L, R
 
 # Enter TF
 # Assuming that no orders of s are skipped in denominator
-numerator = [10]
-denominator = [1, 1, 1, 1]
+numerator = [2, 1, 1]
+denominator = [1, 4, 1, 2]
 denominator.reverse()
 
 # Create A matrix
@@ -31,7 +31,7 @@ A.append(last_row)
 B = []
 for i in range(rows_in_A-1):
     B.append([0])
-B.append([denominator[-1]])
+B.append([1])
 
 # Create C vector
 zero_padding = [0] * (len(denominator) - len(numerator) - 1)
